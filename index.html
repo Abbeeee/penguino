@@ -1,1 +1,53 @@
-Hello World yo
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SnowGame</title>
+
+	<link rel="stylesheet" type="text/css" href="Style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
+
+</head>
+<body id="body">
+	<img src="Images/penguino3.png" alt="penguino logo" id="penguino-logo">
+	<canvas id="rGame" width="600" height="300"></canvas>
+
+	<div id="startDiv">
+		<button id="startButton" onclick="startGame()">START GAME</button>
+		<input type="text" name="name" id="nameInput" placeholder="Enter name here...">
+	</div>
+	<div id="boxes">
+		<div id="scoreTable">
+			<h1>HIGH SCORES</h1>
+			<ol id="highscore"></ol>
+		</div>
+		<div id="instructions">
+			<h2>CONTROLS</h2>
+			<img src="Images/Controls.png" alt="controls" id="controls">
+		</div>
+	</div>
+
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+
+	<script>
+	  var firebaseConfig = {
+	    apiKey: "AIzaSyAbF6_-KC26Jh8N972rG3fwYP9jxFPlSkc",
+	    authDomain: "snowgame-f2e28.firebaseapp.com",
+	    databaseURL: "https://snowgame-f2e28.firebaseio.com",
+	    projectId: "snowgame-f2e28",
+	    storageBucket: "snowgame-f2e28.appspot.com",
+	    messagingSenderId: "548214713101",
+	    appId: "1:548214713101:web:7ecb33221c36d407c2de44",
+	    measurementId: "G-T9MJ0VD5TV"
+	  };
+	  firebase.initializeApp(firebaseConfig);
+	  firebase.analytics();
+	</script>
+
+	<script src="Script.js"></script>
+
+</body>
+</html>
