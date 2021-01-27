@@ -2,7 +2,7 @@ body {
 	margin: auto;
 	text-align: center;
 	position: relative;
-	background-image: url(Images/Bakgrund.png);
+	background-image: url(images/bakgrund.png);
 	background-size: contain;
 	font-family: 'Roboto', sans-serif;
 }
@@ -33,7 +33,7 @@ body {
 	top: 125px;
 	left: 0;
 	right: 0;
-	background-image: url(Images/Static-Background.png);
+	background-image: url(images/static-background.png);
 }
 
 #startButton {
@@ -123,7 +123,6 @@ body {
 	margin: auto;
 	left: 0;
 	right: 0;
-
 }
 
 #scoreTable {

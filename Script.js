@@ -51,17 +51,17 @@ var totalFrames = 2;
 var currentFrame = 0;
 var spriteCounter = 0;
 var myImage = new Image();
-myImage.src = 'Images/Penguin2.png';
+myImage.src = 'images/penguin2.png';
 var penguinSlide = new Image();
-penguinSlide.src = 'Images/PenguinSlide2.png';
+penguinSlide.src = 'images/penguinSlide2.png';
 
 // Obstacle Images
 var obstacleRock = new Image();
-obstacleRock.src = 'Images/Rock3.png';
+obstacleRock.src = 'images/rock3.png';
 var obstacleRock2 = new Image();
-obstacleRock2.src = 'Images/Rock2.png';
+obstacleRock2.src = 'images/rock2.png';
 var obstacleCloud = new Image();
-obstacleCloud.src = 'Images/Cloud.png';
+obstacleCloud.src = 'images/cloud.png';
 
 // Prevent scrolling for arrow keys
 window.addEventListener("keydown", function(e) {
@@ -76,7 +76,7 @@ window.addEventListener("keydown", function(e) {
 var ground = {
 	x: 0,
 	y: yGround,
-	imgPath: 'Images/Ground.png',
+	imgPath: 'images/ground.png',
 	imgObject: new Image(),
 	animate: function() {
 				this.imgObject.src = this.imgPath;
@@ -95,7 +95,7 @@ var ground = {
 var background = {
 		x: 0,
 		y: 0,
-		imgPath: 'Images/Mountains.png',
+		imgPath: 'images/mountains.png',
 		imgObject: new Image(),
 		animate: function() {
 				this.imgObject.src = this.imgPath;
@@ -114,7 +114,7 @@ var background = {
 var background2 = {
 		x: 0,
 		y: 0,
-		imgPath: 'Images/Clouds.png',
+		imgPath: 'images/clouds.png',
 		imgObject: new Image(),
 		animate: function() {
 				this.imgObject.src = this.imgPath;
