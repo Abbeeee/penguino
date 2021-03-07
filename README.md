@@ -1,2 +1,2 @@
 # Penguino
-A infinite runner game, kind of. Part of a school group project.
+A infinite runner game, inspired by the google running dinosaur game. Part of a school group project.
