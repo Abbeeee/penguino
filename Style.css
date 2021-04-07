@@ -1,0 +1,192 @@
+body {
+	margin: auto;
+	text-align: center;
+	position: relative;
+	background-image: url(Images/Bakgrund.png);
+	background-size: contain;
+	font-family: 'Roboto', sans-serif;
+}
+
+#penguino-logo {
+	width: 500px;
+	margin: 20px auto 20px auto;
+	display: block;
+}
+
+#rGame {
+	background-color: #cceeff;
+	border: solid 10px #fff;
+	touch-action: none;
+}
+
+#character {
+	position: absolute;
+	border: solid 10px #fff;
+}
+
+#startDiv {
+	height: 300px;
+	width: 600px;
+	text-align: center;
+	margin: auto;
+	position: absolute;
+	top: 125px;
+	left: 0;
+	right: 0;
+	background-image: url(Images/Static-Background.png);
+}
+
+#startButton {
+	margin-top: 80px;
+	padding: 6px;
+	background-color: #5b4003;
+	border: 6px dashed #8c6309;
+	font-size: 60px;
+	font-family: 'VT323', monospace;
+	color: #fff;
+	text-decoration: none;
+	cursor: pointer;
+	border-radius: 10px;
+	box-shadow: 0 5px #262626;
+}
+
+#startButton:hover {
+	background-color: #4a3502;
+}
+
+#startButton:active {
+	background-color: #4a3502;
+	box-shadow: 0 2px #000000;
+	transform: translateY(4px);
+}
+
+#startButton:focus {
+	outline: 0;
+}
+
+#nameInput {
+	position: absolute;
+	border: 3px solid #8c6309;
+	top: 185px;
+	right: 200px;
+	padding-left: 10px;
+	height: 30px;
+	font-size: 15px;
+}
+
+#restartDiv {
+	height: 300px;
+	width: 600px;
+	text-align: center;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+#restartButton {
+	margin-top: 250px;
+	background-color: #5b4003;
+	border: 3px solid #8c6309;
+	font-size: 30px;
+	padding: 10px;
+	font-family: 'VT323', monospace;
+	color: #fff;
+	text-decoration: none;
+	cursor: pointer;
+	border-radius: 5px;
+	box-shadow: 0 5px #262626;
+}
+
+#restartButton:hover {
+	background-color: #4a3502;
+}
+
+#restartButton:active {
+	background-color: #4a3502;
+	box-shadow: 0 2px #000000;
+	transform: translateY(4px);
+}
+
+#restartButton:focus {
+	outline: 0;
+}
+
+#button:hover {
+	color: #fff;
+}
+
+#boxes {
+	height: 400px;
+	width: 600px;
+	margin: auto;
+	left: 0;
+	right: 0;
+
+}
+
+#scoreTable {
+	height: 350px;
+	width: 300px;
+	float: left;
+	margin-top: 20px;
+	border: 6px dashed #8c6309;
+	background-color: #5b4003;
+	border-radius: 10px;
+}
+
+#instructions {
+	height: 300px;
+	width: 250px;
+	float: right;
+	margin-top: 20px;
+	border: 6px dashed #8c6309;
+	background-color: #5b4003;
+	border-radius: 10px;
+}
+
+#controls {
+	width: 250px;
+}
+
+h1 {
+	color: #fff;
+	margin: 10px 0 5px 0;
+	font-family: 'VT323', monospace;
+	font-size: 55px;
+	font-weight: lighter;
+	border-bottom: 4px dashed #4a3502;
+}
+
+h2 {
+	color: #fff;
+	margin: 10px 0 5px 0;
+	font-family: 'VT323', monospace;
+	font-size: 50px;
+	font-weight: lighter;
+	border-bottom: 4px dashed #4a3502;
+}
+
+#highscore {
+	color: #fff;
+	width: 160px;
+	margin: auto;
+	text-align: left;
+}
+
+ol {
+	padding: 0;
+}
+
+li {
+	border-bottom: 1px dotted white;
+	padding-top: 6px;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	float: right;
+}
