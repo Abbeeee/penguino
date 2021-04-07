@@ -2,7 +2,7 @@ body {
 	margin: auto;
 	text-align: center;
 	position: relative;
-	background-image: url(images/bakgrund.png);
+	background-image: url(Images/Bakgrund.png);
 	background-size: contain;
 	font-family: 'Roboto', sans-serif;
 }
@@ -11,11 +11,13 @@ body {
 	width: 500px;
 	margin: 20px auto 20px auto;
 	display: block;
+	filter: drop-shadow(0 5px 6px #282829);
 }
 
 #rGame {
 	background-color: #cceeff;
-	border: solid 10px #fff;
+	border: solid 10px #F6F6F6;
+	border-radius: 10px;
 	touch-action: none;
 }
 
@@ -33,7 +35,7 @@ body {
 	top: 125px;
 	left: 0;
 	right: 0;
-	background-image: url(images/static-background.png);
+	background-image: url(Images/Static-Background.png);
 }
 
 #startButton {
@@ -123,7 +125,7 @@ body {
 	margin: auto;
 	left: 0;
 	right: 0;
-
+	filter: drop-shadow(5px 5px 0 #282829);
 }
 
 #scoreTable {
