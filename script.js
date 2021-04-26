@@ -1,6 +1,7 @@
 //==============================================================================
-//	VARIABLES
+//	GAME VARIABLES
 //==============================================================================
+
 const canvas = document.getElementById('rGame');
 const context = canvas.getContext('2d');
 const yGround = 250;
@@ -25,24 +26,6 @@ window.addEventListener('keyup', resetSizeListener);
 canvas.addEventListener('touchstart', touchEvent);
 canvas.addEventListener('touchend', touchEventReset);
 
-// TOUCH EVENTS
-function touchEvent(ev) {
-		evX = ev.targetTouches[0].pageX - canvas.offsetLeft;
-		ev.preventDefault();
-		passive: false;
-		if (evX < 300) {
-			playerSquare.jump();
-		} else if (evX > 300 && playerSquare.height === 40) {
-			playerSquare.crouch();
-		}
-};
-
-function touchEventReset(ev) {
-		if (playerSquare.height === 20) {
-			playerSquare.resetSize();
-		}
-};
-
 // The Penguin variables
 var shift = 0;
 var frameWidth = 30;
@@ -55,7 +38,7 @@ myImage.src = 'images/penguin2.png';
 var penguinSlide = new Image();
 penguinSlide.src = 'images/penguinSlide2.png';
 
-// Obstacle Images
+// Obstacle images variables
 var obstacleRock = new Image();
 obstacleRock.src = 'images/rock3.png';
 var obstacleRock2 = new Image();
@@ -70,9 +53,14 @@ window.addEventListener("keydown", function(e) {
     }
 }, false);
 
+// Displays scores from firebase
+getScore();
+
+
 //==============================================================================
 //	GROUND & BACKGROUND
 //==============================================================================
+
 var ground = {
 	x: 0,
 	y: yGround,
@@ -103,7 +91,7 @@ var background = {
 				context.drawImage(this.imgObject, this.x, this.y);
 				this.x -= 1;
 				// Draw another image at the edge of the first image
-			 	context.drawImage(this.imgObject, this.x - 595, this.y);
+			 	context.drawImage(this.imgObject, this.x - 599, this.y);
 			 	// If the image scrolls off the screen, reset
 			 	if (this.x <= 0) {
 				 	this.x = 600;
@@ -122,7 +110,7 @@ var background2 = {
 				context.drawImage(this.imgObject, this.x, this.y);
 				this.x -= 0.5;
 				// Draw another image at the edge of the first image
-			 	context.drawImage(this.imgObject, this.x - 595, this.y);
+			 	context.drawImage(this.imgObject, this.x - 599, this.y);
 			 	// If the image scrolls off the screen, reset
 			 	if (this.x <= 0) {
 				 	this.x = 600;
@@ -131,13 +119,31 @@ var background2 = {
 };
 
 
-//DISPLAYS SCORES FROM FIREBASE
-getScore();
-
 
 //==============================================================================
 //	KEY LISTENERS
 //==============================================================================
+
+// Touch events
+function touchEvent(ev) {
+		evX = ev.targetTouches[0].pageX - canvas.offsetLeft;
+		ev.preventDefault();
+		passive: false;
+		if (evX < 300) {
+			playerSquare.jump();
+		} else if (evX > 300 && playerSquare.height === 40) {
+			playerSquare.crouch();
+		}
+};
+
+// Reset player size (touch)
+function touchEventReset(ev) {
+		if (playerSquare.height === 20) {
+			playerSquare.resetSize();
+		}
+};
+
+// Keyboard events
 function keyListener(event) {
 	if (event.keyCode == 38) {
 		playerSquare.jump();
@@ -152,7 +158,7 @@ function keyListener(event) {
 	}
 };
 
-// RESET PLAYER SIZE
+// Reset player size (keyboard)
 function resetSizeListener(event) {
 	if (event.keyCode == 40) {
 		playerSquare.resetSize();
@@ -161,24 +167,26 @@ function resetSizeListener(event) {
 
 
 
-
 //==============================================================================
 //	START & END GAME
 //==============================================================================
+
 function startGame(event) {
 	name = document.getElementById('nameInput').value;
-	if (name != '') {
+	var letters = /^[A-Za-z]+$/;
+	if (name.match(letters)) {
 		document.getElementById("startDiv").style.display = "none";
 		playerSquare = new objectCreator(playerWidth, playerHeight, "white", 50, yGround - playerHeight);
 		gameLoop();
 	} else {
-		document.getElementById('nameInput').style.border = '3px solid red';
-		document.getElementById('nameInput').placeholder = 'Please enter name here...';
+		document.getElementById('nameInput').value = '';
+		document.getElementById('nameInput').style.borderBottom = '5px solid #e23333';
+		document.getElementById('nameInput').placeholder = 'Enter name here, only A-Z';
 	}
 };
 
 function gameOver() {
-	// CHECKS PLACEMENT
+	// Check score placement
 	var placement = highscore.length + 1;
 	for (var i = 0; i < numberOfHighscores && i < highscore.length; i++) {
 		if (score > highscore[i].Score) {
@@ -187,33 +195,31 @@ function gameOver() {
 		}
 	}
 
-	// CHECKS IF PLACEMENT INSIDE HIGHSCORE = HIGHSCORE
+	// Checks if highscore is enough to make it to top 10
 	if (placement < numberOfHighscores) {
 		context.font = '50px Roboto';
 		context.textAlign = "center";
-		context.fillStyle = '#5b4003';
+		context.fillStyle = '#442919';
 		context.fillText('NEW HIGHSCORE', 300, 70);
 
 		context.font = '30px Roboto';
 		context.textAlign = "center";
-		context.fillStyle = '#5b4003';
+		context.fillStyle = '#442919';
 		context.fillText('YOU ARE NR: ' + placement, 300, 290);
-	}
-
-	// GAME OVER TEXT
-	else {
+	} else {
+		// Display game over text
 		context.font = 'bold 50px Roboto';
-		context.fillStyle = '#5b4003';
+		context.fillStyle = '#442919';
 		context.textAlign = "center";
 		context.fillText('GAME OVER', 300, 70);
 	}
 
-	// DISPLAYS SCORE
+	// Display your score
 	context.font = '20px Roboto';
-	context.fillStyle = '#5b4003';
+	context.fillStyle = '#442919';
 	context.fillText('YOUR SCORE: ' + score, 300, 100);
 
-	//CREATE RESTART-BUTTON
+	// Output restart button
 	var body = document.getElementById('body');
 	var gameOverDiv = document.createElement('div');
 	gameOverDiv.setAttribute('id', 'restartDiv');
@@ -225,29 +231,31 @@ function gameOver() {
 	restartButton.appendChild(textInButton);
 	restartButton.addEventListener('click', restart);
 
-	// // SAVE AS OBJECT AND PUSH TO FIREBASE
+	// Save score as object and push to firebase
 	var scoreObject = {
 		Name: name,
 		Score: score
 	}
 	firebaseRef.push(scoreObject);
 
-	// REFRESH SCOREBOARD
+	// Refresh the scoreboard
 	getScore();
 };
 
-// GET OBJECT FROM FIREBASE
+
+// GET scores from firebase
 function getScore() {
 	firebaseRef.orderByChild("Score").limitToLast(numberOfHighscores).once("value", function(snapshot){ //PUSH IN LAST 10 CHILDREN = HIHGEST SCORE
 		snapshot.forEach(function(child){
 			highscore.push(child.val());
 		});
-		highscore.reverse(); //NEED TO FLIP BECAUSE FIREBSE STORE IN ASCENDING ORDER
+		highscore.reverse();
 		displayScore();
 	});
 };
 
-// DISPLAY HIGHSCORE FROM ARRAY
+
+// Create highscore list
 function displayScore() {
 	document.getElementById('highscore').innerHTML = '';
 	for(var i = 0; i < numberOfHighscores; i++){
@@ -256,8 +264,8 @@ function displayScore() {
 		var scoreTable = document.getElementById('scoreTable');
 		var ol = document.getElementById('highscore');
 		var li = document.createElement('li');
-		var strong = document.createElement('strong');
-		var p = document.createElement('p');
+		var strong = document.createElement('span');
+		var p = document.createElement('span');
 		strong.innerHTML = name;
 		p.innerHTML = score;
 		li.appendChild(strong);
@@ -266,7 +274,7 @@ function displayScore() {
 	}
 };
 
-// CLEAR AND RESTART GAME
+// Restart game and reset variables
 function restart() {
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	score = 0;
@@ -285,10 +293,12 @@ function randomHeight() {
 	var obstacleHeight = Math.floor(Math.random() * (30 - 15 + 1)) + 15;
 	return obstacleHeight;
 }
+
 function randomWidth() {
 	var obstacleWidth = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
 	return obstacleWidth;
 }
+
 
 // Gets random number between 50 and whatever randomSpawn(x) is set to in objectspawner further down
 function randomSpawn(x) {
@@ -307,18 +317,19 @@ function everyinterval(x) {
 
 
 //==============================================================================
-//	FUNCTION TO CREATE OBJECTS / MANIPULATE OBJECTS
+//	FUNCTION TO CREATE OBJECTS
 //==============================================================================
+
 function objectCreator(width, height, type, x, y) {
     this.width = width;
     this.height = height;
     this.x = x;
     this.y = y;
-		this.yVel = 0;
+	this.yVel = 0;
     this.update = function() {
 					if (this.y >= yGround - this.height) {
 						this.y = yGround - this.height;
-					};
+					}
 					if (type === 'rock') {
 						context.drawImage(obstacleRock, this.x, this.y);
 					} else if (type === 'rock2') {
@@ -329,7 +340,7 @@ function objectCreator(width, height, type, x, y) {
 
         	// context.fillStyle = color;
         	// context.fillRect(this.x, this.y, this.width, this.height);
-	  }
+	}
 		this.drawPenguin = function() {
 						if (this.y >= yGround - this.height) {
 								this.y = yGround - this.height;
@@ -352,32 +363,32 @@ function objectCreator(width, height, type, x, y) {
 					    currentFrame = 0;
 					  }
 		}
-		// JUMP ACTION
+		// Jump
 		this.jump = function() {
 						var jumpForce = -18;
 						if (this.y === yGround - this.height) {
 							this.yVel = jumpForce;
 						};
 		}
-		// CROUCH ACTION
+		// Crouch
 		this.crouch = function() {
 						this.height = this.height / 2;
 						this.width = 50;
 						this.x -= 10;
 
 		}
-		// RESET TO NORMAL SIZE
+		// Revert to normal
 		this.resetSize = function() {
 						this.height = playerHeight;
 						this.width = playerWidth;
 						this.x += 10;
 		}
-		// GRAVITY
+		// Gravity
 		this.gravity = function() {
 						this.yVel += 1.3;
 						this.y = this.y + this.yVel;
 		}
-		// COLLISION DETECTION
+		// Collision detection
 		this.collideWith = function(obstacle) {
 						    if (this.x < obstacle.x + obstacle.width &&
 		   						this.x + this.width > obstacle.x &&
@@ -392,11 +403,12 @@ function objectCreator(width, height, type, x, y) {
 
 
 //==============================================================================
-//	THE GAME LOOP
+//	THE GAME LOOP, while game is active
 //==============================================================================
+
 function gameLoop() {
 
-	// ANIMATE EVERYTHING AS LONG AS NO COLLISION
+	// Animate as long as no collision occurs
 	for (i = 0; i < obstacles.length; i++) {
 		if (playerSquare.collideWith(obstacles[i])) {
 			gameOver();
@@ -405,17 +417,17 @@ function gameLoop() {
 		}
 	}
 
-	// GRAVITY ON PLAYERSQUARE
+	// Apply gravity rules on player
 	playerSquare.gravity();
 
-	// RESET AND DRAW IMAGES
+	// Clear canvas & output images
 	context.clearRect(0, 0, canvas.width, 250);
 	background2.animate();
 	background.animate();
 	ground.animate();
 
 
-	// INCREASE SCORE
+	// Increment score
 	score++;
 	counter++;
 	spriteCounter++;
@@ -425,19 +437,19 @@ function gameLoop() {
 		spriteCounter = 0;
 	}
 
-	// DISPLAYS SCORE
+	// Display current score
 	context.font = '18px Roboto';
-	context.fillStyle = '#000';
+	context.fillStyle = '#442919';
 	context.textAlign = 'start';
 	context.fillText('SCORE: '+ score, 5, 23);
 
-	// Increase the speed at score 750 and 1000
+	// Increase the speed at score 750 and 1500
 	// switch (score) {
 	// 	case 0:
 	// 		speed = 5;
 	// 		x = 80;
 	// 		break;
-	// 	case 1000:
+	// 	case 1500:
 	// 		speed = 6;
 	// 		x = 70;
 	// 		break;
@@ -458,21 +470,22 @@ function gameLoop() {
 		counter = 2;
 	}
 
-	// PRINT OBSTACLE POSITION IN CANVAS AND SET SPEED
+	// Output obstacles in canvas
 	for (i = 0; i < obstacles.length; i++) {
 		obstacles[i].x -= speed;
 		obstacles[i].update();
 
+		// Remove obstacles out of frame
 		if (obstacles[i].x < -obstacles[i].width) {
 			obstacles.splice(i, 1);
 			i--;
 		}
 	}
 
-	// PRINT PLAYER POSITION
+	// Output player position
 	playerSquare.drawPenguin();
 
-	// BREAK LOOP IF ALIVE FALSE
+	// Break game loop if NOT alive (obviously)
 	if (alive) {
 		window.requestAnimationFrame(gameLoop);
 	}

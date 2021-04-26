@@ -5,6 +5,7 @@ body {
 	background-image: url(images/bakgrund.png);
 	background-size: contain;
 	font-family: 'Roboto', sans-serif;
+	counter-reset: section;
 }
 
 #penguino-logo {
@@ -21,11 +22,6 @@ body {
 	touch-action: none;
 }
 
-#character {
-	position: absolute;
-	border: solid 10px #fff;
-}
-
 #startDiv {
 	height: 300px;
 	width: 600px;
@@ -40,25 +36,25 @@ body {
 
 #startButton {
 	margin-top: 80px;
-	padding: 6px;
-	background-color: #5b4003;
-	border: 6px dashed #8c6309;
+	padding: 5px 15px;
+	background-color: #442919;
+	border: 6px dashed #8d593d;
 	font-size: 60px;
 	font-family: 'VT323', monospace;
-	color: #fff;
+	color: #ece3d8;
 	text-decoration: none;
 	cursor: pointer;
 	border-radius: 10px;
-	box-shadow: 0 5px #262626;
+	box-shadow: 0 6px #1a0f08;
 }
 
 #startButton:hover {
-	background-color: #4a3502;
+	background-color: #311c11;
 }
 
 #startButton:active {
-	background-color: #4a3502;
-	box-shadow: 0 2px #000000;
+	background-color: #3a2113;
+	box-shadow: 0 2px #1a0f08;
 	transform: translateY(4px);
 }
 
@@ -68,12 +64,16 @@ body {
 
 #nameInput {
 	position: absolute;
-	border: 3px solid #8c6309;
+	border-radius: 5px;
 	top: 185px;
-	right: 200px;
-	padding-left: 10px;
-	height: 30px;
-	font-size: 15px;
+	right: 180px;
+	box-sizing: content-box;
+	font-size: 16px;
+	border: none;
+	height: 50px;
+	padding: 0 20px 0 20px;
+	background-color: #ece3d8;
+	transition: all 0.5s;
 }
 
 #restartDiv {
@@ -89,106 +89,119 @@ body {
 
 #restartButton {
 	margin-top: 250px;
-	background-color: #5b4003;
-	border: 3px solid #8c6309;
+	background-color: #442919;
+	border: 4px dashed #8d593d;
 	font-size: 30px;
-	padding: 10px;
+	padding: 10px 15px;
 	font-family: 'VT323', monospace;
-	color: #fff;
+	color: #ece3d8;
 	text-decoration: none;
 	cursor: pointer;
-	border-radius: 5px;
-	box-shadow: 0 5px #262626;
+	border-radius: 10px;
+	box-shadow: 0 5px #1a0f08;
 }
 
 #restartButton:hover {
-	background-color: #4a3502;
+	background-color: #442919;
 }
 
 #restartButton:active {
-	background-color: #4a3502;
-	box-shadow: 0 2px #000000;
-	transform: translateY(4px);
+	background-color: #442919;
+	box-shadow: 0 2px #1a0f08;
+	transform: translateY(3px);
 }
 
 #restartButton:focus {
 	outline: 0;
 }
 
-#button:hover {
-	color: #fff;
-}
-
 #boxes {
-	height: 400px;
-	width: 600px;
+	max-width: 620px;
 	margin: auto;
-	left: 0;
-	right: 0;
-	filter: drop-shadow(5px 5px 0 #282829);
+	margin-top: 25px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	filter: drop-shadow(5px 6px 0 #282829);
 }
 
 #scoreTable {
-	height: 350px;
-	width: 300px;
-	float: left;
-	margin-top: 20px;
-	border: 6px dashed #8c6309;
-	background-color: #5b4003;
+	padding: 5px 30px 15px 30px;
+	background-color: #442919;
+	border: 6px dashed #8d593d;
 	border-radius: 10px;
 }
 
 #instructions {
-	height: 300px;
-	width: 250px;
-	float: right;
-	margin-top: 20px;
-	border: 6px dashed #8c6309;
-	background-color: #5b4003;
+	padding: 5px 30px 15px 30px;
+	background-color: #442919;
+	border: 6px dashed #8d593d;
 	border-radius: 10px;
 }
 
 #controls {
-	width: 250px;
+	margin-top: 15px;
+	display: inline-block;
+	max-width: 200px;
 }
 
 h1 {
-	color: #fff;
+	color: #ece3d8;
 	margin: 10px 0 5px 0;
 	font-family: 'VT323', monospace;
 	font-size: 55px;
 	font-weight: lighter;
-	border-bottom: 4px dashed #4a3502;
+	border-bottom: 4px dashed #8d593d;
 }
 
 h2 {
-	color: #fff;
+	color: #ece3d8;
 	margin: 10px 0 5px 0;
 	font-family: 'VT323', monospace;
 	font-size: 50px;
 	font-weight: lighter;
-	border-bottom: 4px dashed #4a3502;
+	border-bottom: 4px dashed #8d593d;
 }
 
 #highscore {
-	color: #fff;
-	width: 160px;
-	margin: auto;
-	text-align: left;
-}
-
-ol {
-	padding: 0;
+	color: #ece3d8;
+	margin-left: -10px;
 }
 
 li {
-	border-bottom: 1px dotted white;
-	padding-top: 6px;
+	border-bottom: 1px dotted#ece3d8;
+	padding-top: 8px;
+	display: flex;
+	justify-content: space-between;
+}
+
+li:first-child {
+    font-weight: 700;
+}
+
+li:before {
+    counter-increment: section;
+    content: counter(section) ".";
+    position: absolute;
+	font-weight: 700;
+    margin-left: -25px;
+}
+
+li:last-child:before {
+    margin-left: -30px;
 }
 
 p {
 	margin: 0;
 	padding: 0;
-	display: inline-block;
-	float: right;
+}
+
+#nameInput {
+
+}
+#nameInput:focus, #nameInput:hover {
+	outline: none;
+	background-color: whitesmoke;
+	filter: drop-shadow(0px 5px 0 #442919);
+	transition: all 0.2s;
 }
