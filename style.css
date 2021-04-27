@@ -102,11 +102,11 @@ body {
 }
 
 #restartButton:hover {
-	background-color: #442919;
+	background-color: #3a2113;
 }
 
 #restartButton:active {
-	background-color: #442919;
+	background-color: #3a2113;
 	box-shadow: 0 2px #1a0f08;
 	transform: translateY(3px);
 }
@@ -183,7 +183,7 @@ li:before {
     counter-increment: section;
     content: counter(section) ".";
     position: absolute;
-	font-weight: 700;
+		font-weight: 700;
     margin-left: -25px;
 }
 
@@ -196,9 +196,6 @@ p {
 	padding: 0;
 }
 
-#nameInput {
-
-}
 #nameInput:focus, #nameInput:hover {
 	outline: none;
 	background-color: whitesmoke;
