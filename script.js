@@ -443,17 +443,27 @@ function gameLoop() {
 	context.textAlign = 'start';
 	context.fillText('SCORE: '+ score, 5, 23);
 
-	// Increase the speed at score 750 and 1500
-	// switch (score) {
-	// 	case 0:
-	// 		speed = 5;
-	// 		x = 80;
-	// 		break;
-	// 	case 1500:
-	// 		speed = 6;
-	// 		x = 70;
-	// 		break;
-	// }
+	// Increase the speed at certain scores
+	switch (score) {
+		case 0:
+			speed = 5;
+			x = 80;
+			break;
+		case 750:
+			speed = 5.5;
+			break;
+		case 1000:
+			speed = 6;
+			x = 70;
+			break;
+		case 1750:
+			speed = 6.5;
+			break;
+		case 2000:
+			speed = 7;
+			x = 60;
+			break;
+	}
 
 	// Spawn obstacles in once every 50-100 counter tick
 	if (counter == 1 || counter == spawnFrequency && spawnFrequency <= 70 && spawnFrequency > 50) {
