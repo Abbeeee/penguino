@@ -6,7 +6,7 @@ const canvas = document.getElementById('rGame');
 const context = canvas.getContext('2d');
 const yGround = 250;
 var x = 80;
-var name;
+var name = '';
 var playerWidth = 30;
 var playerHeight = 40;
 var obstacles = [];
@@ -197,27 +197,27 @@ function gameOver() {
 
 	// Checks if highscore is enough to make it to top 10
 	if (placement < numberOfHighscores) {
-		context.font = '50px Roboto';
+		context.font = '64px VT323';
 		context.textAlign = "center";
 		context.fillStyle = '#442919';
-		context.fillText('NEW HIGHSCORE', 300, 70);
+		context.fillText('NEW HIGH SCORE', 300, 70);
 
-		context.font = '30px Roboto';
+		context.font = 'bold 20px Roboto';
 		context.textAlign = "center";
 		context.fillStyle = '#442919';
-		context.fillText('YOU ARE NR: ' + placement, 300, 290);
+		context.fillText('Your high score placement: ' + placement, 300, 285);
 	} else {
 		// Display game over text
-		context.font = 'bold 50px Roboto';
+		context.font = '72px VT323';
 		context.fillStyle = '#442919';
 		context.textAlign = "center";
 		context.fillText('GAME OVER', 300, 70);
 	}
 
 	// Display your score
-	context.font = '20px Roboto';
+	context.font = 'bold 20px Roboto';
 	context.fillStyle = '#442919';
-	context.fillText('YOUR SCORE: ' + score, 300, 100);
+	context.fillText('Your score: ' + score, 300, 100);
 
 	// Output restart button
 	var body = document.getElementById('body');
@@ -437,11 +437,17 @@ function gameLoop() {
 		spriteCounter = 0;
 	}
 
+	// Display name
+	context.font = 'bold 18px Roboto';
+	context.fillStyle = '#442919';
+	context.textAlign = 'end';
+	context.fillText(name, 590, 25);
+
 	// Display current score
-	context.font = '18px Roboto';
+	context.font = 'bold 24px Roboto';
 	context.fillStyle = '#442919';
 	context.textAlign = 'start';
-	context.fillText('SCORE: '+ score, 5, 23);
+	context.fillText(score, 5, 25);
 
 	// Increase the speed at certain scores
 	switch (score) {

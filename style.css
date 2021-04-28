@@ -58,10 +58,6 @@ body {
 	transform: translateY(4px);
 }
 
-#startButton:focus {
-	outline: 0;
-}
-
 #nameInput {
 	position: absolute;
 	border-radius: 5px;
