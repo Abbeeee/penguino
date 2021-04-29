@@ -205,7 +205,7 @@ function gameOver() {
 		context.font = 'bold 20px Roboto';
 		context.textAlign = "center";
 		context.fillStyle = '#442919';
-		context.fillText('Your high score placement: ' + placement, 300, 285);
+		context.fillText('High score placement: ' + placement, 300, 285);
 	} else {
 		// Display game over text
 		context.font = '72px VT323';
