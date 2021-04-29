@@ -84,7 +84,7 @@ body {
 }
 
 #restartButton {
-	margin-top: 250px;
+	margin-top: 300px;
 	background-color: #442919;
 	border: 4px dashed #8d593d;
 	font-size: 30px;
@@ -115,6 +115,7 @@ body {
 	max-width: 620px;
 	margin: auto;
 	margin-top: 25px;
+	margin-bottom: 50px;
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;

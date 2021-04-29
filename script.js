@@ -217,7 +217,7 @@ function gameOver() {
 	// Display your score
 	context.font = 'bold 20px Roboto';
 	context.fillStyle = '#442919';
-	context.fillText('Your score: ' + score, 300, 100);
+	context.fillText('Your score: ' + score, 300, 110);
 
 	// Output restart button
 	var body = document.getElementById('body');
@@ -441,7 +441,7 @@ function gameLoop() {
 	context.font = 'bold 18px Roboto';
 	context.fillStyle = '#442919';
 	context.textAlign = 'end';
-	context.fillText(name, 590, 25);
+	context.fillText(name, 590, 20);
 
 	// Display current score
 	context.font = 'bold 24px Roboto';
