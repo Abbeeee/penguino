@@ -40,9 +40,9 @@ penguinSlide.src = 'images/penguinSlide2.png';
 
 // Obstacle images variables
 var obstacleRock = new Image();
-obstacleRock.src = 'images/rock3.png';
+obstacleRock.src = 'images/rock-3-pink.png';
 var obstacleRock2 = new Image();
-obstacleRock2.src = 'images/rock2.png';
+obstacleRock2.src = 'images/rock-2-new.png';
 var obstacleCloud = new Image();
 obstacleCloud.src = 'images/cloud.png';
 
@@ -64,7 +64,7 @@ getScore();
 var ground = {
 	x: 0,
 	y: yGround,
-	imgPath: 'images/ground.png',
+	imgPath: 'images/ground-new.png',
 	imgObject: new Image(),
 	animate: function() {
 				this.imgObject.src = this.imgPath;
