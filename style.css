@@ -9,10 +9,10 @@ body {
 }
 
 #penguino-logo {
-	width: 500px;
-	margin: 20px auto 20px auto;
+	width: 620px;
+	margin: 25px auto 30px auto;
 	display: block;
-	filter: drop-shadow(0 5px 6px #282829);
+	filter: drop-shadow(0 5px 5px #282829);
 }
 
 #rGame {
@@ -28,7 +28,7 @@ body {
 	text-align: center;
 	margin: auto;
 	position: absolute;
-	top: 125px;
+	top: 158px;
 	left: 0;
 	right: 0;
 	background-image: url(images/static-background-new.png);
